@@ -10,9 +10,9 @@ RUN go build -v -o /run-app .
 
 FROM alpine:3.17
 
-RUN apk --no-cache add curl \
-    && curl -fsSL -o /usr/bin/dbmate https://github.com/amacneil/dbmate/releases/download/v1.4.1/dbmate-linux-amd64 \
-    && chmod +x /usr/bin/dbmate
+# Install dbmate in a way that works on Alpine Linux.
+RUN apk --no-cache add npm \
+    && npm install --save-dev dbmate
 
 COPY ./bin /opt/bin
 COPY ./db /opt/db
