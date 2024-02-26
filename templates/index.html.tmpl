@@ -9,6 +9,9 @@
     {{ if .Region }}
     <h2>I'm running in the {{.Region}} region</h2>
     {{end}}
+    {{ if .Version }}
+    <footer>Running version {{ .Version }}</footer>
+    {{ end }}
 </body>
 
 </html>
