@@ -1,0 +1,29 @@
+# fly.toml app configuration file generated for go-fly-example on 2024-02-26T14:09:40+10:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'go-fly-example'
+primary_region = 'syd'
+
+[build]
+
+[env]
+  PORT = '8001'
+
+[http_service]
+  internal_port = 8001
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ['app']
+
+[[vm]]
+  memory = '1gb'
+  cpu_kind = 'shared'
+  cpus = 1
+
+[mounts]
+  source = "myapp_data"
+  destination = "/data"
