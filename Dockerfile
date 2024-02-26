@@ -14,5 +14,8 @@ RUN apk --no-cache add curl \
     && curl -fsSL -o /usr/bin/dbmate https://github.com/amacneil/dbmate/releases/download/v1.4.1/dbmate-linux-amd64 \
     && chmod +x /usr/bin/dbmate
 
+COPY ./bin /opt/
+COPY ./db /opt/
+
 COPY --from=builder /run-app /usr/local/bin/
 CMD ["run-app"]
