@@ -10,12 +10,14 @@ RUN go build -v -o /run-app .
 
 FROM alpine:3.17
 
+WORKDIR /opt
+
 # Install dbmate in a way that works on Alpine Linux.
 RUN apk --no-cache add npm \
     && npm install --save-dev dbmate
 
-COPY ./bin /opt/bin
-COPY ./db /opt/db
+COPY ./bin bin
+COPY ./db db
 
 COPY --from=builder /run-app /usr/local/bin/
 CMD ["run-app"]
