@@ -13,7 +13,7 @@ FROM alpine:3.17
 WORKDIR /opt
 
 # Install dbmate in a way that works on Alpine Linux.
-RUN apk --no-cache add npm \
+RUN apk --no-cache add npm sqlite \
     && npm install --save-dev dbmate
 
 COPY ./bin bin
