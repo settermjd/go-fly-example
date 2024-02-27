@@ -9,10 +9,37 @@
     {{ if .Region }}
     <h2>I'm running in the {{.Region}} region</h2>
     {{end}}
+
+    {{ if len .Users | eq 0 }}
+    <div>
+        No users are currently available.
+        Would you like to create one?
+    </div>
+    {{ else }}
+    <div>We have users!!</div>
+    <table>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>email address</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{ range .Users}}
+            <tr>
+                <td>{{ .ID }}</td>
+                <td>{{ .Name }}</td>
+                <td>{{ .Email }}</td>
+            </tr>
+            {{ end }}
+        </tbody>
+    </table>
+    {{ end }}
+
     {{ if .Version }}
     <footer>Running version {{ .Version }}</footer>
     {{ end }}
 </body>
 
 </html>
-
