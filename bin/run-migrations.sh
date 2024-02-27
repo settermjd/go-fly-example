@@ -21,14 +21,7 @@ if [ ! -d $db_dir ]; then
 fi
 
 # Run any pending migrations
-# 1 is returned if there are pending migrations
-# 0 is returned if there are no pending migrations
-npx dbmate status --exit-code --quiet
-no_migrations=$?
-if [ ! $no_migrations ]; then
-    echo "Running pending migrations...."
-    npx dbmate up
-fi
+npx dbmate up
 
 echo "....Finished provisioning the database."
 
