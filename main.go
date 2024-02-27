@@ -1,11 +1,15 @@
 package main
 
 import (
+	"database/sql"
 	"embed"
 	"html/template"
 	"log"
 	"net/http"
 	"os"
+	"strings"
+
+	_ "modernc.org/sqlite"
 )
 
 //go:embed templates/*
